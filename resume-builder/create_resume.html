@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Your Resume - Resume Builder</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>">
+    
+    <!-- Fonts and Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/create-resume.css">
+</head>
+<body data-page="create" class="bg-alt">
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container container">
+            <a href="index.html" class="nav-logo">
+                <i class="fas fa-file-alt"></i> Resume Builder
+            </a>
+            <div class="nav-actions">
+                <button id="saveProgress" class="btn btn-secondary">
+                    <i class="fas fa-save"></i> Save Progress
+                </button>
+                <button id="previewResume" class="btn btn-primary">
+                    <i class="fas fa-eye"></i> Preview
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Progress Bar -->
+    <div class="progress-container">
+        <div class="container">
+            <div class="progress-bar">
+                <div class="progress" id="formProgress" style="width: 25%"></div>
+            </div>
+            <div class="progress-steps">
+                <div class="step active" data-step="personal">
+                    <i class="fas fa-user"></i>
+                    <span>Personal</span>
+                </div>
+                <div class="step" data-step="experience">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Experience</span>
+                </div>
+                <div class="step" data-step="education">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Education</span>
+                </div>
+                <div class="step" data-step="skills">
+                    <i class="fas fa-star"></i>
+                    <span>Skills</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form Container -->
+    <div class="container">
+        <form id="resumeForm" class="resume-form">
+            <!-- Personal Information -->
+            <section id="personal" class="form-section active fade-in">
+                <h2><i class="fas fa-user-circle"></i> Personal Information</h2>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" class="form-control" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="jobTitle">Job Title</label>
+                        <input type="text" id="jobTitle" name="jobTitle" class="form-control" placeholder="Software Engineer" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone" class="form-control" placeholder="+1 234 567 890" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input type="text" id="location" name="location" class="form-control" placeholder="New York, USA" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="portfolio">Portfolio/Website</label>
+                        <input type="url" id="portfolio" name="portfolio" class="form-control" placeholder="https://yourportfolio.com">
+                    </div>
+                    <div class="form-group span-2">
+                        <label for="summary">Professional Summary</label>
+                        <textarea id="summary" name="summary" class="form-control" rows="4" placeholder="Brief overview of your professional background and career goals" required></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Work Experience -->
+            <section id="experience" class="form-section">
+                <h2><i class="fas fa-briefcase"></i> Work Experience</h2>
+                <div id="experienceContainer">
+                    <div class="experience-entry form-grid">
+                        <div class="form-group">
+                            <label>Job Title</label>
+                            <input type="text" name="experience[0].title" class="form-control" placeholder="Software Engineer" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Company</label>
+                            <input type="text" name="experience[0].company" class="form-control" placeholder="Tech Company Inc." required>
+                        </div>
+                        <div class="form-group">
+                            <label>Start Date</label>
+                            <input type="month" name="experience[0].startDate" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>End Date</label>
+                            <input type="month" name="experience[0].endDate" class="form-control">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="currentJob0" class="current-job">
+                                <label for="currentJob0">Current Position</label>
+                            </div>
+                        </div>
+                        <div class="form-group span-2">
+                            <label>Key Responsibilities & Achievements</label>
+                            <textarea name="experience[0].responsibilities" class="form-control" rows="4" placeholder="• Led a team of 5 developers in developing a new feature&#10;• Reduced system response time by 40%&#10;• Implemented automated testing, improving code coverage by 75%" required></textarea>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" id="addExperience" class="btn btn-secondary">
+                    <i class="fas fa-plus"></i> Add More Experience
+                </button>
+            </section>
+
+            <!-- Education -->
+            <section id="education" class="form-section">
+                <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+                <div id="educationContainer">
+                    <div class="education-entry form-grid">
+                        <div class="form-group">
+                            <label>Degree</label>
+                            <input type="text" name="education[0].degree" class="form-control" placeholder="Bachelor of Science in Computer Science" required>
+                        </div>
+                        <div class="form-group">
+                            <label>School</label>
+                            <input type="text" name="education[0].school" class="form-control" placeholder="University Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Start Date</label>
+                            <input type="month" name="education[0].startDate" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>End Date</label>
+                            <input type="month" name="education[0].endDate" class="form-control">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="currentEducation0" class="current-education">
+                                <label for="currentEducation0">Currently Studying</label>
+                            </div>
+                        </div>
+                        <div class="form-group span-2">
+                            <label>Achievements & Activities</label>
+                            <textarea name="education[0].achievements" class="form-control" rows="3" placeholder="• Graduated with Honors (GPA: 3.8/4.0)&#10;• President of Computer Science Club&#10;• Published research paper on AI applications"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" id="addEducation" class="btn btn-secondary">
+                    <i class="fas fa-plus"></i> Add More Education
+                </button>
+            </section>
+
+            <!-- Skills -->
+            <section id="skills" class="form-section">
+                <h2><i class="fas fa-star"></i> Skills & Expertise</h2>
+                <div class="form-grid">
+                    <div class="form-group span-2">
+                        <label for="technicalSkills">Technical Skills</label>
+                        <textarea id="technicalSkills" name="technicalSkills" class="form-control" rows="3" placeholder="JavaScript, React, Node.js, Python, AWS, Docker" required></textarea>
+                        <div class="skills-preview" id="technicalSkillsPreview"></div>
+                    </div>
+                    <div class="form-group span-2">
+                        <label for="softSkills">Soft Skills</label>
+                        <textarea id="softSkills" name="softSkills" class="form-control" rows="3" placeholder="Leadership, Project Management, Team Collaboration, Problem Solving" required></textarea>
+                        <div class="skills-preview" id="softSkillsPreview"></div>
+                    </div>
+                    <div class="form-group span-2">
+                        <label for="languages">Languages</label>
+                        <textarea id="languages" name="languages" class="form-control" rows="2" placeholder="English (Native), Spanish (Fluent), Mandarin (Basic)"></textarea>
+                        <div class="skills-preview" id="languagesPreview"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation Buttons -->
+            <div class="form-navigation">
+                <button type="button" id="prevSection" class="btn btn-secondary" disabled>
+                    <i class="fas fa-arrow-left"></i> Previous
+                </button>
+                <button type="button" id="nextSection" class="btn btn-primary">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+                <button type="submit" id="submitForm" class="btn btn-primary" style="display: none;">
+                    <i class="fas fa-check"></i> Create Resume
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html>
