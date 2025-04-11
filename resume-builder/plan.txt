@@ -1,0 +1,20 @@
+### Plan for Editing Resume Builder
+
+1. **`preview_resume.html`**:
+   - Ensure all sections are correctly displaying the resume data.
+   - Add any new sections if required.
+
+2. **`create_resume.html`**:
+   - Update the form to include any new fields or features for resume creation.
+
+3. **`index.html`**:
+   - Ensure the template selection process is clear and functional.
+   - Update any descriptions or instructions as needed.
+
+4. **`main.js`**:
+   - Implement any new JavaScript functions needed to support the updated features.
+   - Ensure that data is correctly saved and retrieved from local storage.
+
+5. **CSS Files**:
+   - Review and update styles to ensure a modern and responsive design.
+   - Add any new styles required for new sections or features.
