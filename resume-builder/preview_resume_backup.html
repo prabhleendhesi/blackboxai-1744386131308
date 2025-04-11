@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview Your Resume - Resume Builder</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>">
+    
+    <!-- Fonts and Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/preview-resume.css">
+</head>
+<body data-page="preview">
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container container">
+            <a href="index.html" class="nav-logo">
+                <i class="fas fa-file-alt"></i> Resume Builder
+            </a>
+            <div class="nav-actions">
+                <a href="create_resume.html" class="btn btn-secondary">
+                    <i class="fas fa-edit"></i> Edit Resume
+                </a>
+                <button id="downloadPDF" class="btn btn-primary">
+                    <i class="fas fa-download"></i> Download PDF
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Preview Container -->
+    <div class="preview-container">
+        <!-- Template Controls -->
+        <div class="template-controls">
+            <div class="control-group">
+                <label>Font Size</label>
+                <div class="button-group">
+                    <button id="decreaseFont" class="btn btn-icon" title="Decrease font size">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button id="resetFont" class="btn btn-icon" title="Reset font size">
+                        <i class="fas fa-undo"></i>
+                    </button>
+                    <button id="increaseFont" class="btn btn-icon" title="Increase font size">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="control-group">
+                <label>Spacing</label>
+                <div class="button-group">
+                    <button id="decreaseSpacing" class="btn btn-icon" title="Decrease spacing">
+                        <i class="fas fa-compress-alt"></i>
+                    </button>
+                    <button id="resetSpacing" class="btn btn-icon" title="Reset spacing">
+                        <i class="fas fa-undo"></i>
+                    </button>
+                    <button id="increaseSpacing" class="btn btn-icon" title="Increase spacing">
+                        <i class="fas fa-expand-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resume Preview -->
+        <div class="resume-preview">
+            <div id="resumeContent" class="resume-content">
+                <!-- Header Section -->
+                <header class="resume-header">
+                    <h1 id="fullName"></h1>
+                    <p id="jobTitle" class="job-title"></p>
+                    <div class="contact-info">
+                        <span id="email"><i class="fas fa-envelope"></i></span>
+                        <span id="phone"><i class="fas fa-phone"></i></span>
+                        <span id="location"><i class="fas fa-map-marker-alt"></i></span>
+                        <span id="portfolio"><i class="fas fa-globe"></i></span>
+                    </div>
+                </header>
+
+                <!-- Summary Section -->
+                <section class="resume-section">
+                    <h2><i class="fas fa-user-circle"></i> Professional Summary</h2>
+                    <p id="summary"></p>
+                </section>
+
+                <!-- Experience Section -->
+                <section class="resume-section">
+                    <h2><i class="fas fa-briefcase"></i> Work Experience</h2>
+                    <div id="experienceContainer"></div>
+                </section>
+
+                <!-- Education Section -->
+                <section class="resume-section">
+                    <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+                    <div id="educationContainer"></div>
+                </section>
+
+                <!-- Skills Section -->
+                <section class="resume-section">
+                    <h2><i class="fas fa-star"></i> Skills & Expertise</h2>
+                    <div class="skills-container">
+                        <div class="skills-group">
+                            <h3>Technical Skills</h3>
+                            <div id="technicalSkills" class="skills-list"></div>
+                        </div>
+                        <div class="skills-group">
+                            <h3>Soft Skills</h3>
+                            <div id="softSkills" class="skills-list"></div>
+                        </div>
+                        <div class="skills-group">
+                            <h3>Languages</h3>
+                            <div id="languages" class="skills-list"></div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="spinner"></div>
+        <p>Generating Preview...</p>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+</body>
+</html>
